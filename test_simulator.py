@@ -148,3 +148,28 @@ class TestSimulator(TestCase):
         self.sim.world.set_parameters([[3, 4], [4]])
 
         self.assertEqual(self.sim.world.getP(), [[3, 4], [4]])
+
+    def test_aging(self):
+        """
+        We want cells to not just die, but to have a 'living' period so they will die in a few turns.
+        """
+
+        # Make a small world.
+        world = World(10, 10)
+        self.sim.set_world(world)
+
+        # Create a cell to die
+        x, y = 3, 4
+
+        self.sim.world.set(x, y)
+        
+        # Lets say it takes a cell 6 turns to die
+        for i in range(0, 5):
+            self.sim.update()
+            
+        self.assertEqual(self.sim.world.get(3, 4), 1)
+        
+        self.sim.update()
+        self.assertEqual(self.sim.world.get(3, 4), 0)
+
+        
