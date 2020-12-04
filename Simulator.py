@@ -31,11 +31,18 @@ class Simulator:
                 neighbours = sum(self.world.get_neighbours(x, y))
 
                 if neighbours < 2:
+                    # This cell will die due to underpopulation
                     self.world.set(x, y, 0)
-                if neighbours > 3:
+                elif neighbours > 3:
+                    # This cell will die due to overpopulation
                     self.world.set(x, y, 0)
-                if neighbours == 2 or neighbours == 3:
+                elif neighbours == 3:
+                    # This cell came to life (or if it allready was alive it will stay alive)
                     self.world.set(x, y, 1)
+                elif neighbours == 2:
+                    # This cell survived
+                    pass
+                
 
         return self.world
 
