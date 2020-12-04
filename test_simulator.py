@@ -100,8 +100,8 @@ class TestSimulator(TestCase):
 
     def test_survival_3_neighbours(self):
         """
-                Checks how many neighbours a cel has. If it has two or three neighbours it will live.
-                """
+        Checks how many neighbours a cel has. If it has two or three neighbours it will live.
+        """
 
         # Make a small world.
         world = World(10, 10)
@@ -115,3 +115,22 @@ class TestSimulator(TestCase):
 
         self.sim.update()
         self.assertEqual(self.sim.world.get(2, 5), 1)
+
+    def test_birth_population(self):
+        """
+        Checks how many neighbours a dead cel has. If it is exactly three, it will come to life.
+        """
+
+        # Make a small world.
+        world = World(10, 10)
+        self.sim.set_world(world)
+
+        # The coördinates of the dead cell we will focus on are [3, 4]
+        # Create a few cells
+        coordinates = [[3, 5], [3, 3], [2, 4]]
+
+        for cell in coordinates:
+            self.sim.world.set(cell[0], cell[1])
+
+        self.sim.update()
+        self.assertEqual(self.sim.world.get(3, 4), 1)
