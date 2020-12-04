@@ -145,6 +145,6 @@ class TestSimulator(TestCase):
         world = World(10, 10)
         self.sim.set_world(world)
 
-        self.sim.world.set_parameters(1, 2, 2)
+        self.sim.world.set_parameters([[3, 4], [4]])
 
-        self.assertEqual(self.sim.world.getP(), [1, 2, 2])
+        self.assertEqual(self.sim.world.getP(), [[3, 4], [4]])
