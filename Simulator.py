@@ -31,16 +31,16 @@ class Simulator:
             for y in range(0, self.world.height):
                 neighbours = sum(self.world.get_neighbours(x, y))
 
-                if neighbours < parameters[0]:
+                if neighbours < min(parameters[0]):
                     # This cell will die due to underpopulation
                     self.world.set(x, y, 0)
-                elif neighbours > parameters[1]:
+                elif neighbours > max(parameters[0]):
                     # This cell will die due to overpopulation
                     self.world.set(x, y, 0)
-                elif neighbours == parameters[2]:
+                elif neighbours in parameters[1]:
                     # This cell came to life (or if it already was alive it will stay alive)
                     self.world.set(x, y, 1)
-                elif neighbours == parameters[0]:
+                elif neighbours in parameters[0]:
                     # This cell survived
                     pass
 
