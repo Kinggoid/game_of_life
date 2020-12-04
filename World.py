@@ -6,6 +6,9 @@ class World:
     Data structure for representing Game of Life worlds.
     """
 
+    min_neighbours = 2
+    max_neighbours = 3
+
     def __init__(self, width: int, height: int = -1):
         """
         Constructor of World datatype.
@@ -58,6 +61,13 @@ class World:
                 if not (nx is x and ny is y):
                     neighbour_values.append(self.world[ny%self.height][nx%self.width])
         return neighbour_values
+
+    def set_parameters(self, min_neighbours: int, max_neighbours: int):
+        self.min_neighbours = min_neighbours
+        self.max_neighbours = max_neighbours
+
+    def get_parameters(self):
+        return [self.min_neighbours, self.max_neighbours]
 
     def __str__(self):
         print('-'*self.width*4)
