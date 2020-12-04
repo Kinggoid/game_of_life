@@ -134,17 +134,17 @@ class TestSimulator(TestCase):
 
         self.sim.update()
         self.assertEqual(self.sim.world.get(3, 4), 1)
-    
+
     def test_change_parameters(self):
         """
-        If you dont do anything you will get the basic game of life rules, but if you want you can change the 
+        If you dont do anything you will get the basic game of life rules, but if you want you can change the
         parameters for a different ruleset.
         """
 
         # Make a small world.
         world = World(10, 10)
         self.sim.set_world(world)
-        
-        self.sim.world.parameters(1, 2)
-        
-        self.assertEqual(self.sim.world.getP(), [1, 2])
+
+        self.sim.world.set_parameters(1, 2, 2)
+
+        self.assertEqual(self.sim.world.getP(), [1, 2, 2])
