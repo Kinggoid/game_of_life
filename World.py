@@ -67,7 +67,7 @@ class World:
         self.birth = birth
 
     def get_parameters(self):
-        return [self.min_neighbours, self.max_neighbours, self.birth]
+        return [self.survive, self.birth]
 
     def __str__(self):
         print('-'*self.width*4)
