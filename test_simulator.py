@@ -9,6 +9,7 @@ class TestSimulator(TestCase):
     def setUp(self):
         self.sim = Simulator()
 
+
     def test_update(self):
         """
         Tests that the update functions returns an object of World type.
@@ -44,3 +45,18 @@ class TestSimulator(TestCase):
         self.sim.set_world(world)
         self.assertIsInstance(self.sim.get_world(), World)
         self.assertIs(self.sim.get_world(), world)
+
+    def test_under_population(self):
+        """
+        Checks how many neighbours a cel has. If it has less than two, it will die.
+        """
+        # Make a small world.
+        world = World(10, 10)
+        self.sim.set_world(world)
+        
+        # Create one cell with random coördinates.
+        x, y = 2, 5 
+        
+        world.set(x, y)
+        self.sim.update()
+        self.assertEqual(world.get(x, y), 0)
