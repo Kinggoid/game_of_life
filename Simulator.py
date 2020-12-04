@@ -34,6 +34,8 @@ class Simulator:
                     self.world.set(x, y, 0)
                 if neighbours > 3:
                     self.world.set(x, y, 0)
+                if neighbours == 2 or neighbours == 3:
+                    self.world.set(x, y, 1)
 
         return self.world
 
