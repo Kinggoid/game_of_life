@@ -6,9 +6,8 @@ class World:
     Data structure for representing Game of Life worlds.
     """
 
-    min_neighbours = 2
-    max_neighbours = 3
-    birth = 3
+    survive = [2, 3]
+    birth = [3]
 
     def __init__(self, width: int, height: int = -1):
         """
@@ -63,9 +62,8 @@ class World:
                     neighbour_values.append(self.world[ny%self.height][nx%self.width])
         return neighbour_values
 
-    def set_parameters(self, min_neighbours: int, max_neighbours: int, birth: int):
-        self.min_neighbours = min_neighbours
-        self.max_neighbours = max_neighbours
+    def set_parameters(self, survive: int, max_neighbours: int, birth: int):
+        self.survive = survive
         self.birth = birth
 
     def get_parameters(self):
