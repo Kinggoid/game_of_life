@@ -8,6 +8,7 @@ class World:
 
     min_neighbours = 2
     max_neighbours = 3
+    birth = 3
 
     def __init__(self, width: int, height: int = -1):
         """
@@ -62,12 +63,13 @@ class World:
                     neighbour_values.append(self.world[ny%self.height][nx%self.width])
         return neighbour_values
 
-    def set_parameters(self, min_neighbours: int, max_neighbours: int):
+    def set_parameters(self, min_neighbours: int, max_neighbours: int, birth: int):
         self.min_neighbours = min_neighbours
         self.max_neighbours = max_neighbours
+        self.birth = birth
 
     def get_parameters(self):
-        return [self.min_neighbours, self.max_neighbours]
+        return [self.min_neighbours, self.max_neighbours, self.birth]
 
     def __str__(self):
         print('-'*self.width*4)
