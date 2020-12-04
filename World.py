@@ -62,7 +62,7 @@ class World:
                     neighbour_values.append(self.world[ny%self.height][nx%self.width])
         return neighbour_values
 
-    def set_parameters(self, survive: int, max_neighbours: int, birth: int):
+    def set_parameters(self, survive: int, birth: int):
         self.survive = survive
         self.birth = birth
 
