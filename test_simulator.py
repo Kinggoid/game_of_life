@@ -58,24 +58,6 @@ class TestSimulator(TestCase):
         # Create one cell with random coördinates.
         x, y = 2, 5
 
-        world.set(x, y)
+        self.sim.world.set(x, y)
         self.sim.update()
         self.assertEqual(self.sim.world.get(x, y), 0)
-
-    def test_over_population(self):
-        """
-        Checks how many neighbours a cel has. If it has less than two, it will die.
-        """
-
-        # Make a small world.
-        world = World(10, 10)
-        self.sim.set_world(world)
-
-        # Create a cell and a few surrounding neighbours
-        coordinates = [[2,5], [3,5], [1,5], [2,6], [2,7]]
-
-        for cell in coordinates:
-            world.set(cell[0], cell[1])
-
-        self.sim.update()
-        self.assertEqual(self.sim.world.get(2, 5), 0)
