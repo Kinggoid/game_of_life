@@ -26,7 +26,12 @@ class Simulator:
         """
         self.generation += 1
 
-        #TODO: Do something to evolve the generation
+        for x in range(0, self.world.width):
+            for y in range(0, self.world.height):
+                neighbours = sum(self.world.get_neighbours(x, y))
+
+                if neighbours < 2:
+                    self.world.set(x, y, 0)
 
         return self.world
 
